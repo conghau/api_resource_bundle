@@ -2,70 +2,63 @@
 /**
  * Created by PhpStorm.
  * User: hautruong
- * Date: 7/28/17
- * Time: 10:16 AM
+ * Date: 09/01/2017
+ * Time: 14:17
  */
 
-namespace conghau\Bundle\ApiResource\Factory;
-
-use Doctrine\ORM\QueryBuilder;
-use conghau\Bundle\ApiResource\Collection\PaginateCollection;
-
+namespace conghau\Bundle\ApiResource\Pagination;
 
 /**
- * Class PaginationFactory
- * @package conghau\ApiResource\Factory
+ * Class PaginationCollection
+ *
  */
-class PaginationFactory
+class PaginateCollection
 {
-    private $defaultPageSize = 5;
+    private $items;
+    private $total;
+    private $count;
+    private $pageNumber;
+    private $pageSize;
 
     /**
-     * PaginationFactory constructor.
+     * PaginateCollection constructor.
      *
-     * @param string $defaultPageSize
+     * @param array $items
+     * @param int   $total
+     * @param int   $pageNumber
+     * @param int   $pageSize
      */
-    public function __construct(string $defaultPageSize)
+    public function __construct(array $items, int $total, int $pageNumber, int $pageSize)
     {
-        $this->defaultPageSize = $defaultPageSize;
+        $this->items = $items;
+        $this->total = $total;
+        $this->count = count($items);
+        $this->pageNumber = $pageNumber;
+        $this->pageSize = $pageSize;
     }
 
     /**
-     * createCollection
-     *
-     * @param QueryBuilder $qb
-     * @param int          $pageSize
-     * @param int          $pageNumber
-     *
-     * @return PaginateCollection
+     * @return array
      */
-    public function createCollection($qb, int $pageSize, int $pageNumber)
+    public function getItems(): array
     {
-
-        $adapter = new \stdClass();
-        if ($qb instanceof QueryBuilder) {
-            $adapter = new \Pagerfanta\Adapter\DoctrineORMAdapter($qb, false, false);
-        }
-        if ($qb instanceof \Doctrine\DBAL\Query\QueryBuilder) {
-            $countQueryBuilderModifier = function ($queryBuilder) {
-                $queryBuilder->select('COUNT(*) AS total_results')
-                    ->setMaxResults(1);
-            };
-            $adapter = new \Pagerfanta\Adapter\DoctrineDbalAdapter($qb, $countQueryBuilderModifier);
-        }
-
-        $pagerFanta = new \Pagerfanta\Pagerfanta($adapter);
-        $pagerFanta->setMaxPerPage($pageSize);
-        $pagerFanta->setCurrentPage($pageNumber);
-
-        $programmers = [];
-        foreach ($pagerFanta->getCurrentPageResults() as $result) {
-            $programmers[] = $result;
-        }
-        $paginatedCollection = new PaginateCollection(
-            $programmers, $pagerFanta->getNbResults(), $pageNumber, $pageSize
-        );
-
-        return $paginatedCollection;
+        return $this->items;
     }
+
+    /**
+     * @param array $items
+     */
+    public function setItems(array $items)
+    {
+        $this->items = $items;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotal()
+    {
+        return $this->total;
+    }
+
 }

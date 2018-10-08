@@ -26,7 +26,7 @@
 
     },
     "autoload": {
-        "psr-4": { "conghau\\Bundle\\ApiResource\\": "" },
+        "psr-4": { "conghau\\Bundle\\ApiResource\\ApiResourceBundle": "" },
         "exclude-from-classmap": ["Tests/"]
     }
 }

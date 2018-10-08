@@ -1,7 +1,7 @@
 parameters:
-    class_api_resource_loader: 'TCH\ApiResourceBundle\Routing\ApiResourceLoader'
+    class_api_resource_loader: 'conghau\Bundle\ApiResource\Routing\ApiResourceLoader'
     page_size: 10
-    class_api_resource_pagination_factory: 'TCH\ApiResourceBundle\Factory\PaginationFactory'
+    class_api_resource_pagination_factory: 'conghau\Bundle\ApiResource\Factory\PaginationFactory'
 services:
     tch.api_routing_loader:
         class: %class_api_resource_loader%

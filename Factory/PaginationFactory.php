@@ -8,8 +8,11 @@
 
 namespace conghau\Bundle\ApiResource\Factory;
 
+use conghau\Bundle\ApiResource\Pagination\PaginateCollection;
 use Doctrine\ORM\QueryBuilder;
-use conghau\Bundle\ApiResourceBundle\Collection\PaginateCollection;
+use Pagerfanta\Adapter\DoctrineDbalAdapter;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Pagerfanta;
 
 
 /**
