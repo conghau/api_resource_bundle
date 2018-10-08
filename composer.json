@@ -1,0 +1,32 @@
+{
+    "name": "conghau/api-resource-bundle",
+    "description": "Symfony2 api resource bundle",
+    "keywords": ["resource bundle", "composer", "package"],
+    "license": "DBAD",
+    "authors": [
+        {
+            "name": "conghau",
+            "email": "conghau.master1@gmail.com"
+        }
+    ],
+    "type": "project",
+    "require": {
+        "php": ">=7.0",
+        "nelmio/api-doc-bundle":"^2.13.0",
+        "jms/serializer-bundle":"^0.13|^1.0|^2.0.0",
+        "pagerfanta/pagerfanta": "v1.0.4"
+    },
+	"require-dev": {
+		"phpunit/phpunit": "5.2.*",
+        "symfony/framework-bundle": "^2.8",
+        "symfony/monolog-bundle": "2.12.0 ",
+        "doctrine/orm": "v2.5.5",
+        "sensio/framework-extra-bundle": "^3.0",
+        "doctrine/doctrine-bundle": "1.6.4"
+
+    },
+    "autoload": {
+        "psr-4": { "conghau\\Bundle\\ApiResource": "" },
+        "exclude-from-classmap": ["Tests/"]
+    }
+}
