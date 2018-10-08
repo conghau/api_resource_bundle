@@ -1,8 +1,8 @@
 {
     "name": "conghau/api-resource-bundle",
     "description": "Symfony2 api resource bundle",
-    "keywords": ["resource bundle", "composer", "package"],
-    "license": "DBAD",
+    "keywords": ["resource bundle", "symfony", "package"],
+    "license": "MIT",
     "authors": [
         {
             "name": "conghau",
