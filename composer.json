@@ -9,7 +9,7 @@
             "email": "conghau.master1@gmail.com"
         }
     ],
-    "type": "project",
+    "type": "symfony-bundle",
     "require": {
         "php": ">=7.0",
         "nelmio/api-doc-bundle":"^2.13.0",
